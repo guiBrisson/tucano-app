@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.github.guibrisson.tucano.database.AppDatabase
-import com.github.guibrisson.tucano.database.model.Task
+import com.github.guibrisson.tucano.database.model.TaskEntity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -16,10 +16,10 @@ class TaskDaoTest {
     private lateinit var taskDao: TaskDao
     private lateinit var db: AppDatabase
     private val tasks = listOf(
-        Task(id = "1", title = "item 1", description = null),
-        Task(id = "2", title = "item 2", description = null),
-        Task(id = "3", title = "item 3", description = null),
-        Task(id = "4", title = "item 4", description = null),
+        TaskEntity(id = "1", title = "item 1", description = null),
+        TaskEntity(id = "2", title = "item 2", description = null),
+        TaskEntity(id = "3", title = "item 3", description = null),
+        TaskEntity(id = "4", title = "item 4", description = null),
     )
 
     @Before

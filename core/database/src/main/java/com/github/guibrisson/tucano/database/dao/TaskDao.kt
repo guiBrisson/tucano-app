@@ -5,23 +5,20 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Upsert
-import com.github.guibrisson.tucano.database.model.Task
+import com.github.guibrisson.tucano.database.model.TaskEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TaskDao {
     @Query("SELECT * FROM tasks")
-    fun getAllTasks(): Flow<List<Task>>
+    fun getAllTasks(): Flow<List<TaskEntity>>
 
     @Query("SELECT * FROM tasks WHERE id = :id")
-    fun getTaskById(id: String): Flow<Task>
+    fun getTaskById(id: String): Flow<TaskEntity?>
 
     @Upsert
-    fun upsertTask(vararg task: Task)
-
-    @Insert
-    fun insertTask(vararg task: Task)
+    suspend fun upsertTask(vararg task: TaskEntity)
 
     @Delete
-    fun delete(vararg task: Task)
+    suspend fun delete(vararg task: TaskEntity)
 }
